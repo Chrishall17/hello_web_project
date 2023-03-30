@@ -1,4 +1,5 @@
-import pytest
+import pytest, sys, random, py, pytest, os
+from xprocess import ProcessStarter
 from lib.database_connection import DatabaseConnection
 from app import app
 
@@ -18,6 +19,14 @@ def web_client():
     with app.test_client() as client:
         yield client
 
+
+# @pytest.fixture
+# def test_web_address(xprocess):
+#     python_executable = sys.executable
+#     app_file = py.path.local(__file__).dirpath("../app.py")
+#     port = str(random.randint(4000, 4099))
+#     class Starter(ProcessStarter):
+#         env = {"PORT": port.}
 # Now, when we create a test, if we allow it to accept a parameter called
 # `db_connection` or `web_client`, Pytest will automatically pass in the objects
 # we created above.

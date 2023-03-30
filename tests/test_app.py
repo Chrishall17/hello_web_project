@@ -1,4 +1,4 @@
-# Tests for your routes go here
+from playwright.sync_api import Page, expect
 
 # === Example Code Below ===
 
@@ -93,3 +93,11 @@ def test_get_names(web_client):
     response = web_client.get('/names?name=Eddie')
     assert response.status_code == 200
     assert response.data.decode('utf-8') == 'Julia, Alice, Karim, Eddie'
+
+
+"""
+When we visit /goodbye
+We see, "Bye!"
+"""
+def test_get_goodbye(page, test_web_address):
+    pass

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -91,12 +91,16 @@ def names():
 # POST /goodbye
 #   With body parameter: name=Alice
 
-@app.route('/goodbye', methods=['POST'])
-def goodbye():
-    name = request.form['name'] # The value is 'Alice'
+# @app.route('/goodbye', methods=['POST'])
+# def goodbye():
+#     name = request.form['name'] # The value is 'Alice'
 
-    # Send back a fond farewell with the name
-    return f"Goodbye {name}!"
+#     # Send back a fond farewell with the name
+#     return f"Goodbye {name}!"
+
+@app.route('/goodbye', methods=['GET'])
+def get_goodbye():
+    return render_template("goodbye.html", message="Bye!")
 
 @app.route('/submit', methods=['POST'])
 def submit():
